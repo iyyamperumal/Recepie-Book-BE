@@ -1,8 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-require("dotenv").config();
+import express from "express";
+import path from "path";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
 import { fileURLToPath } from "url";
+import recipeRoutes from "./routes/recipes.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -10,7 +12,6 @@ const __dirname = path.dirname(__filename);
 app.use(cors());
 app.use(express.json());
 
-const recipeRoutes = require("./routes/recipes");
 app.use("/api/recipes", recipeRoutes);
 app.use("/images", express.static("images"));
 app.use("/images", express.static(path.join(__dirname, "images")));

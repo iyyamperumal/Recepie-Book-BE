@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const recipeSchema = new mongoose.Schema({
+const recipeSchema = new Schema({
   title: String,
   description: String,
   ingredients: [String],
@@ -9,4 +9,4 @@ const recipeSchema = new mongoose.Schema({
   collection: 'recipebook' // Force it to use 'recipebook' collection
 });
 
-module.exports = mongoose.model("Recipe", recipeSchema);
+export default model("Recipe", recipeSchema);
